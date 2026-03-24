@@ -4,6 +4,7 @@
   "description": "A Weight Tracker App",
   "main": "index.js",
   "scripts": {
+    "vercel:dev": "vercel dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/csc3221-master/weight-tracker/issues"
   },
-  "homepage": "https://github.com/csc3221-master/weight-tracker#readme"
+  "homepage": "https://github.com/csc3221-master/weight-tracker#readme",
+  "devDependencies": {
+    "vercel": "^50.37.0"
+  },
+  "dependencies": {
+    "mongoose": "^9.3.2"
+  }
 }
