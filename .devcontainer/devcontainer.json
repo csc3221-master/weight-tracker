@@ -1,0 +1,28 @@
+{
+  "name": "Weight Tracker Webapp (node+mongo)",
+  "dockerComposeFile": ["../docker-compose.yml"],
+  "service": "app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
+  "forwardPorts": [3000, 27017],
+  "portsAttributes": {
+    "51173": { "label": "Vite dev server",
+               "onAutoForward": "openBrowser" },
+    "3000": { "label": "Express server" },
+    "27017": { "label": "MongoDB" }
+  },
+
+  "postCreateCommand": "bash -lc 'if [ -f package.json ]; then npm install; else echo \"No package.json yet (Phase 0)\"; fi'",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "mongodb.mongodb-vscode"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - .:/workspaces/${COMPOSE_PROJECT_NAME:-workspace}:cached
+    command: sleep infinity
+    environment:
+      # Your app will use this later (Mongoose will connect to this host)
+      MONGO_URL: mongodb://db:27017/weight-tracker
+      NODE_ENV: development
+    depends_on:
+      - db
+
+  db:
+    image: mongo:7
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - "27017:27017"
+
+volumes:
+  mongo-data:
+
